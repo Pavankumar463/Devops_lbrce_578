@@ -1,63 +1,63 @@
 package project_pavan_bogasamudram;
 
 
-import java.io.*;
-import java.lang.*;
-import java.lang.Math;
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
 
-//Driver class
- class cal {
-	// main function
-	public static void main(String[] args)
-	{
-		// Stores two numbers
-		double num1, num2;
+public class cal {
+    public static void main(String[] args) {
+        try {
+            Scanner scanner = new Scanner(new File("input.txt"));
+            double result = 0.0;
+            double num1 = 0.0, num2 = 0.0;
+            String operator = "";
 
-		// Take input from the user
-		Scanner sc = new Scanner(System.in);
+            // Read numbers and operator from input
+            if (scanner.hasNextDouble()) {
+                num1 = scanner.nextDouble();
+            }
 
-		System.out.println("Enter the numbers:");
+            while (scanner.hasNext()) {
+                operator = scanner.next(); // Read the operator
 
-		// Take the inputs
-		num1 = sc.nextDouble();
-		num2 = sc.nextDouble();
+                if (scanner.hasNextDouble()) {
+                    num2 = scanner.nextDouble(); // Read the second number
+                }
 
-		System.out.println("Enter the operator (+,-,*,/):");
+                // Perform calculation based on operator
+                switch (operator) {
+                    case "+":
+                        result = num1 + num2;
+                        break;
+                    case "-":
+                        result = num1 - num2;
+                        break;
+                    case "*":
+                        result = num1 * num2;
+                        break;
+                    case "/":
+                        if (num2 != 0) {
+                            result = num1 / num2;
+                        } else {
+                            System.out.println("Error: Division by zero.");
+                            return;
+                        }
+                        break;
+                    default:
+                        System.out.println("Invalid operator.");
+                        return;
+                }
 
-		char op = sc.next().charAt(0);
-		double o = 0;
+                num1 = result; // Store the result to use in the next operation if any
+            }
 
-		switch (op) {
-		// case to add two numbers
-		case '+':
-			o = num1 + num2;
-			break;
-
-		// case to subtract two numbers
-		case '-':
-			o = num1 - num2;
-			break;
-
-		// case to multiply two numbers
-		case '*':
-			o = num1 * num2;
-			break;
-
-		// case to divide two numbers
-		case '/':
-			o = num1 / num2;
-			break;
-
-		default:
-			System.out.println("You enter wrong input");
-		}
-
-		System.out.println("The final result:");
-		System.out.println();
-
-		// print the final result
-		System.out.println(num1 + " " + op + " " + num2
-						+ " = " + o);
-	}
+            System.out.println("Final Result: " + result);
+            scanner.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found.");
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
 }
