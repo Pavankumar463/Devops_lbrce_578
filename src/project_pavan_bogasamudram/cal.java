@@ -7,7 +7,7 @@ import java.lang.Math;
 import java.util.Scanner;
 
 //Driver class
- class BasicCalculator {
+ class cal {
 	// main function
 	public static void main(String[] args)
 	{
