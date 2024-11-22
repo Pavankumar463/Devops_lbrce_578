@@ -10,7 +10,7 @@ public class file2 {
 
         // Read input from a file (you can replace "input.txt" with the actual file path)
         try {
-            File file = new File("input.txt");
+        	File file = new File("C:/ProgramData/Jenkins/.jenkins/workspace/projectk/input.txt");
             Scanner sc = new Scanner(file);
 
             System.out.println("Reading input from file:");
