@@ -3,41 +3,17 @@ import java.util.Scanner;
 
 public class file1 {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter username or email:");
+        String username=sc.nextLine();
+        System.out.println("Enter password:");
+        String pass=sc.nextLine();
+        System.out.println("Re-enter the password to confirm password:");
+        String cpass=sc.nextLine();
+        if (pass==cpass)
+        	System.out.println("Signn up succesful");
+        else
+        	System.out.println("Sugn up unsuccesful");
 
-        System.out.print("Enter the first number: ");
-        double num1 = scanner.nextDouble();
-
-        System.out.print("Enter the second number: ");
-        double num2 = scanner.nextDouble();
-
-        System.out.print("Enter the operator (+, -, *, /): ");
-        char operator = scanner.next().charAt(0);
-
-        double result;
-
-        switch (operator) {
-            case '+':
-                result = num1 + num2;
-                break;
-            case '-':
-                result = num1 - num2;
-                break;
-            case '*':
-                result = num1 * num2;
-                break;
-            case '/':
-                if (num2 == 0) {
-                    System.out.println("Error: Division by zero");
-                    return;
-                }
-                result = num1 / num2;
-                break;
-            default:
-                System.out.println("Invalid operator");
-                return;
-        }
-
-        System.out.println(num1 + " " + operator + " " + num2 + " = " + result);
     }
 }
